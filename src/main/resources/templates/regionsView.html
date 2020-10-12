@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Regions</title>
@@ -7,5 +7,11 @@
 <body>
 
 <h1>regions will go here</h1>
+
+
+<h2 th:each="region:${regions}"><a th:href="@{'/regions/'+ ${region.region}}"
+                                    th:text="${region.region}">Region</a>
+
+
 </body>
 </html>
