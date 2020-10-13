@@ -112,6 +112,35 @@ public class JPAWiringTest {
         assertThat(regionRepo.findById(france.getId()).get().getWines().contains(frenchWine));
         assertEquals(wineRepo.findWineByName("red wine"), frenchRed);
     }
+
+    @Test
+    public void shouldBeAbleToGetReviewsOfOneSingleWineFromReviewRepo() {
+        Region napa = new Region("Napa");
+        Region ny = new Region("New York");
+        Wine napaRed = new Wine("NapaRed", napa);
+        Wine newYork = new Wine("NYWhite", ny);
+        Review firstReview = new Review("this sucks", napaRed);
+        Review secondReview = new Review("this is ok", napaRed);
+        Review thirdReview = new Review("this is really bad", newYork);
+        Review fourthReview = new Review("nice", newYork);
+
+        regionRepo.save(napa);
+        regionRepo.save(ny);
+        wineRepo.save(napaRed);
+        wineRepo.save(newYork);
+        reviewRepo.save(firstReview);
+        reviewRepo.save(secondReview);
+        reviewRepo.save(thirdReview);
+
+        entityManager.flush();
+        entityManager.clear();
+
+        assertThat(reviewRepo.findByWineName("NapaRed").contains(firstReview));
+        assertThat(reviewRepo.findByWineName("NapaRed").contains(secondReview));
+        assertThat(reviewRepo.findByWineName("NapaRed").contains(thirdReview));
+        assertThat(reviewRepo.findByWineName("NapaRed").contains(fourthReview));
+    }
+
 }
 
 

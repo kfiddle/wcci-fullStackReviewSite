@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All the reviews of a single wine</title>
+    <link th:href="@{/mainLayout.css}" rel="stylesheet">
+</head>
+
+<nav class="regionsNavBar">
+    <a href="/regions">Return To Featured Regions</a>
+</nav>
+
+<body class="singleWinePage">
+<main class="singleWineMain">
+
+    <h1 class="wineName" th:text="${wine}"></h1>
+
+    <ul>
+
+        <li class="WineReviewsList" th:each="review:${singleWineReviewsList}">
+            <p th:text="${review.content}">review here</p>
+    </ul>
+
+</main>
+
+
+<footer>
+    <p>&copy wcci- Fall 2020- The Greatest Cohort In History</p>
+</footer>
+
+</body>
+
+</html>

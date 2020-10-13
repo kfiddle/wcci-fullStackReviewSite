@@ -5,9 +5,14 @@
     <title>Regions</title>
     <link th:href="@{/mainLayout.css}" rel="stylesheet" >
 </head>
+
+<nav class="regionsNavBar">
+    <a href="/wines">Return To The Complete List</a>
+</nav>
+
 <body>
 <main class="AllRegionsMain">
-<h1>regions will go here</h1>
+<h1 class="mainHeader">All Featured Regions</h1>
 
 <ul class="regionsList">
 <li th:each="region:${regions}"><a th:href="@{'/regions/'+ ${region.region}}"
@@ -16,7 +21,6 @@
 </ul>
 
 </main>
-
 
 <footer>
     <p>&copy wcci- Fall 2020- The Greatest Cohort In History</p>

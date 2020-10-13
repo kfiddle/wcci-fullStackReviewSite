@@ -23,11 +23,11 @@ public class WineController {
         return "allWinesView";
     }
 
-    @GetMapping("/wines/{wine}")
-    public String displaySingleWineAndItsReviews(@PathVariable String wine, Model model) {
-        model.addAttribute("singleWine", wineRepo.findWineByName(wine));
-        return "singleWineView";
-    }
+//    @GetMapping("/wines/{wine}")
+//    public String displaySingleWineAndItsReviews(@PathVariable String wine, Model model) {
+//        model.addAttribute("singleWine", wineRepo.findWineByName(wine));
+//        return "singleWineView";
+   // }
 
     @GetMapping("{region}/wines")
     public String displayListOfWinesByRegion(@PathVariable String region, Model model) {

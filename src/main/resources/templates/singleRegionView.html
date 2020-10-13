@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>wines in region</title>
+    <link th:href="@{/mainLayout.css}" rel="stylesheet" >
 </head>
+<nav class="regionsNavBar">
+    <a href="/regions">Return To Featured Regions</a>
+</nav>
+
 <body>
+<main class="singleRegionMain">
 
-<h1>This will list all wines by region</h1>
+<h2 class="regionName" th:text="${singleRegion.region}"></h2>
 
-<h2 th:text="${singleRegion.region}"></h2>
+<ul>
+    <li class="regionsList" th:each="wine:${singleRegion.wines}"><a th:href="@{'/wines/' + ${wine.name}}"
+                                   th:text="${wine.name}">Wine</a>
+</ul>
 
+</main>
 
-<h2 th:each="wine:${singleRegion.wines}" th:text="${wine.name}"></h2>
-
-
-
-
-
-<!--<a th:href="@{/wine(id=${wine.id})}" th:text="${review.title}"></a>-->
+<footer>
+    <p>&copy wcci- Fall 2020- The Greatest Cohort In History</p>
+</footer>
 </body>
 </html>
