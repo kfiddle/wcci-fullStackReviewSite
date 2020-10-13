@@ -61,20 +61,6 @@ public class WebLayerTest {
 
     @Test
     public void shouldBeAbleToViewAllWinesFromAllRegions() throws Exception {
-//        Region france = new Region("France");
-//        Region riesling = new Region("Riesling");
-//        Region napa = new Region("Napa");
-//        Wine frenchRed = new Wine("French Red", france);
-//        Wine germanWine = new Wine("German Reisling", riesling);
-//        Wine napaWine = new Wine("CA wine", napa);
-//
-//        regionRepo.save(france);
-//        regionRepo.save(riesling);
-//        regionRepo.save(napa);
-//
-//        wineRepo.save(frenchRed);
-//        wineRepo.save(germanWine);
-//        wineRepo.save(napaWine);
 
         mockMvc.perform(get("/wines"))
                 .andExpect(status().isOk())
@@ -86,10 +72,6 @@ public class WebLayerTest {
     public void shouldBeAbleToViewAWine() throws Exception {
         Region france = new Region("France");
         Wine frenchRed = new Wine("FrenchRed", france);
-        //Review frenchReview = new Review("really bad", frenchRed);
-//        Optional wrappedWine = Optional.of(frenchRed);
-//        when(wineRepo.findById(frenchRed.getId())).thenReturn(wrappedWine);
-
         when(wineRepo.findWineByName("FrenchRed")).thenReturn(frenchRed);
         mockMvc.perform(get("/wines/FrenchRed"))
                 .andExpect(status().isOk())
