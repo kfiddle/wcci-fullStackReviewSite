@@ -1,0 +1,94 @@
+* {
+    font-family: sans-serif;
+    line-height: 1.6em;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    text-decoration: none;
+}
+
+.AllWinesMain {
+    display:grid;
+    width: available;
+    height: 1100px;
+    background-image: url("images/sven-wilhelm-2cRXSWyMHA8-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mainHeader{
+    margin-top: 5%;
+    margin-right: 10%;
+    display:flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.mainSubHeading {
+    margin-left: 15%;
+}
+
+.allWinesList {
+    margin-left: 60%;
+    list-style-type: none;
+}
+
+.allWinesList a {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: brown;
+    font-weight: bold;
+
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #333;
+}
+
+nav a {
+    margin-right: 15%;
+    color:bisque;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.AllRegionsMain{
+    width: available;
+    height: 800px;
+    background-image: url("images/armando-castillejos-jiv4NngVq9U-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.regionsList{
+    margin-left: 15%;
+
+    font-size: 1.5em;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+.regionsList li {
+    padding:5px;
+    color: blueviolet;
+}
+
+footer{
+    color: brown;
+    text-align: center;
+}

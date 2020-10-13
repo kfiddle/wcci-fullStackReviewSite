@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>wines in region</title>
@@ -7,5 +7,16 @@
 <body>
 
 <h1>This will list all wines by region</h1>
+
+<h2 th:text="${singleRegion.region}"></h2>
+
+
+<h2 th:each="wine:${singleRegion.wines}" th:text="${wine.name}"></h2>
+
+
+
+
+
+<!--<a th:href="@{/wine(id=${wine.id})}" th:text="${review.title}"></a>-->
 </body>
 </html>

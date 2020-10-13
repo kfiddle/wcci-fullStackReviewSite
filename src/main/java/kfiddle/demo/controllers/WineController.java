@@ -13,8 +13,6 @@ import javax.annotation.Resource;
 @Controller
 public class WineController {
 
-//    @Resource
-//    ReviewRepository reviewRepo;
 
     @Resource
     private WineRepository wineRepo;
@@ -27,8 +25,14 @@ public class WineController {
 
     @GetMapping("/wines/{wine}")
     public String displaySingleWineAndItsReviews(@PathVariable String wine, Model model) {
-        model.addAttribute("wine", wineRepo.findWineByName(wine));
+        model.addAttribute("singleWine", wineRepo.findWineByName(wine));
         return "singleWineView";
+    }
+
+    @GetMapping("{region}/wines")
+    public String displayListOfWinesByRegion(@PathVariable String region, Model model) {
+        model.addAttribute("winesOfRegion", wineRepo.findWinesByRegion(region));
+        return "singleRegionView";
     }
 
 

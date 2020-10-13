@@ -19,7 +19,7 @@ public class Wine {
     @ManyToOne
     private Region region;
 
-    @OneToMany
+    @OneToMany (mappedBy = "wine")
     private Collection<Review> reviews;
 
 

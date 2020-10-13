@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>All Wines </title>
+    <link th:href="@{/mainLayout.css}" rel="stylesheet" >
 </head>
-<body>
 
-<h1>All the wines in the entire collection here</h1>
+<nav class="regionsNavBar">
+    <a href="/regions">View All Available Wine Regions</a>
+</nav>
+<body>
+<main class="AllWinesMain">
+<h1 class="mainHeader">Our Entire Collection</h1>
+    <h2 class ="mainSubHeading">Please choose a wine to see its reviews</h2>
+
+<ul class="allWinesList">
+    <li th:each="wine:${allWines}"><a class="listItems" th:href="@{'/wines/'+ ${wine.name}}"
+                                      th:text="${wine.name}">Name</a>
+    </li>
+</ul>
+
+
+</main>
+
+
+<footer>
+    <p>&copy wcci- Fall 2020- The Greatest Cohort In History</p>
+</footer>
+
 
 </body>
 </html>

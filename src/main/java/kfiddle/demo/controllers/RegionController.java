@@ -1,5 +1,6 @@
 package kfiddle.demo.controllers;
 
+import kfiddle.demo.models.Region;
 import kfiddle.demo.repositories.RegionRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ public class RegionController {
 
     @GetMapping("/regions/{region}")
     public String displayWinesByRegion(@PathVariable String region, Model model) {
-        model.addAttribute("region", regionRepo.findByRegion(region));
+        model.addAttribute("singleRegion", regionRepo.findByRegion(region));
         return "singleRegionView";
     }
 

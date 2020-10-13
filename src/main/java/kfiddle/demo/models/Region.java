@@ -15,7 +15,7 @@ public class Region {
 
     private String region;
 
-    @OneToMany
+    @OneToMany(mappedBy = "region")
     private Collection<Wine> wines;
 
 

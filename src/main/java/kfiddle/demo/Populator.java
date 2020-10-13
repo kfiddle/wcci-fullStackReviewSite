@@ -97,6 +97,7 @@ public class Populator implements CommandLineRunner {
         wineRepo.save(wine21);
         wineRepo.save(wine22);
 
+        Review review = new Review("Let's try this out", wine1);
         Review review1 = new Review("content1", wine1);
         Review review2 = new Review("content2", wine2);
         Review review3 = new Review("content3", wine3);
@@ -120,6 +121,8 @@ public class Populator implements CommandLineRunner {
         Review review21 = new Review("content21", wine21);
         Review review22 = new Review("content22", wine22);
 
+
+        reviewRepo.save(review);
         reviewRepo.save(review1);
         reviewRepo.save(review2);
         reviewRepo.save(review3);

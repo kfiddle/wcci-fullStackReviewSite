@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Regions</title>
+    <link th:href="@{/mainLayout.css}" rel="stylesheet" >
 </head>
 <body>
-
+<main class="AllRegionsMain">
 <h1>regions will go here</h1>
 
-
-<h2 th:each="region:${regions}"><a th:href="@{'/regions/'+ ${region.region}}"
+<ul class="regionsList">
+<li th:each="region:${regions}"><a th:href="@{'/regions/'+ ${region.region}}"
                                     th:text="${region.region}">Region</a>
+</li>
+</ul>
+
+</main>
 
 
+<footer>
+    <p>&copy wcci- Fall 2020- The Greatest Cohort In History</p>
+</footer>
 </body>
 </html>
