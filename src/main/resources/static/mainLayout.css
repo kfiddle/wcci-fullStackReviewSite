@@ -93,6 +93,7 @@ nav a {
 }
 
 .singleRegionMain {
+    margin-top: 2%;
     width: available;
     height: 650px;
     background-image: url("images/luigi-pozzoli-dI8rfSEE-n0-unsplash.jpg");
