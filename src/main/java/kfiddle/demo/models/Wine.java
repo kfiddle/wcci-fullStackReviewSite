@@ -15,6 +15,7 @@ public class Wine {
     @GeneratedValue
     private Long id;
     private String name;
+    private String color;
 
     @ManyToOne
     private Region region;
@@ -34,6 +35,10 @@ public class Wine {
         return name;
     }
 
+    public String getColor(){
+        return color;
+    }
+
     public Collection getReviews(){
         return reviews;
     }
@@ -42,9 +47,10 @@ public class Wine {
     protected Wine(){
     }
 
-    public Wine(String name, Region region) {
+    public Wine(String name, Region region, String color) {
         this.name = name;
         this.region = region;
+        this.color = color;
     }
 
     @Override

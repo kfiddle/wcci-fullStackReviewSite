@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>By color here</title>
+    <link th:href="@{/mainLayout.css}" rel="stylesheet" >
+</head>
+
+<nav class="regionsNavBar">
+    <a href="/wines">Return To The Complete List</a>
+</nav>
+
+<body>
+
+<main class="wineByColorMain">
+
+<ul>
+    <li class="colorWinesList" th:each="wine:${winesByColor}"><a th:href="@{'/wines/' + ${wine.name}}" th:text="${wine.name}"></a>
+
+</ul>
+
+
+<!--<ul>-->
+<!--    <li class="regionsList" th:each="wine:${singleRegion.wines}"><a th:href="@{'/wines/' + ${wine.name}}"-->
+<!--                                                                    th:text="${wine.name}">Wine</a>-->
+<!--</ul>-->
+
+</main>
+</body>
+</html>

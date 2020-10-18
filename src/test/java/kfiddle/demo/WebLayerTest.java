@@ -71,7 +71,7 @@ public class WebLayerTest {
     @Test
     public void shouldBeAbleToViewAWine() throws Exception {
         Region france = new Region("France");
-        Wine frenchRed = new Wine("FrenchRed", france);
+        Wine frenchRed = new Wine("FrenchRed", france, "red");
         when(wineRepo.findWineByName("FrenchRed")).thenReturn(frenchRed);
         mockMvc.perform(get("/wines/FrenchRed"))
                 .andExpect(status().isOk())

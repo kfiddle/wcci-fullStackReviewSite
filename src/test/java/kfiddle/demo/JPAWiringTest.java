@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import java.util.Collection;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -52,7 +54,7 @@ public class JPAWiringTest {
     @Test
     public void wineRepoShouldExist() {
         Region napa = new Region("Napa");
-        Wine napaRed = new Wine("NapaRed", napa);
+        Wine napaRed = new Wine("NapaRed", napa, "red");
 
         regionRepo.save(napa);
         wineRepo.save(napaRed);
@@ -69,8 +71,8 @@ public class JPAWiringTest {
     public void reviewsShouldExistAndWineShouldHaveSomeReviewsForIt() {
         Region napa = new Region("Napa");
         Region ny = new Region("New York");
-        Wine napaRed = new Wine("NapaRed", napa);
-        Wine newYork = new Wine("NYWhite", ny);
+        Wine napaRed = new Wine("NapaRed", napa, "red");
+        Wine newYork = new Wine("NYWhite", ny, "white");
         Review firstReview = new Review("this sucks", napaRed);
         Review secondReview = new Review("this is ok", napaRed);
         Review thirdReview = new Review("this is really bad", napaRed);
@@ -96,9 +98,9 @@ public class JPAWiringTest {
     @Test
     public void regionShouldBeAbleToHaveManyWinesAndAlsoRetrieveSingleWine() {
         Region france = new Region("France");
-        Wine frenchRed = new Wine("red wine", france);
-        Wine frenchWhite = new Wine("white wine", france);
-        Wine frenchWine = new Wine("french wine", france);
+        Wine frenchRed = new Wine("red wine", france, "red");
+        Wine frenchWhite = new Wine("white wine", france, "white");
+        Wine frenchWine = new Wine("french wine", france, "red");
 
         regionRepo.save(france);
         wineRepo.save(frenchRed);
@@ -117,8 +119,8 @@ public class JPAWiringTest {
     public void shouldBeAbleToGetReviewsOfOneSingleWineFromReviewRepo() {
         Region napa = new Region("Napa");
         Region ny = new Region("New York");
-        Wine napaRed = new Wine("NapaRed", napa);
-        Wine newYork = new Wine("NYWhite", ny);
+        Wine napaRed = new Wine("NapaRed", napa, "red");
+        Wine newYork = new Wine("NYWhite", ny, "white");
         Review firstReview = new Review("this sucks", napaRed);
         Review secondReview = new Review("this is ok", napaRed);
         Review thirdReview = new Review("this is really bad", newYork);
@@ -141,6 +143,30 @@ public class JPAWiringTest {
         assertThat(reviewRepo.findByWineName("NapaRed").contains(fourthReview));
     }
 
+    @Test
+    public void shouldBeAbleToViewWinesByColor() {
+        Region napa = new Region("Napa");
+        Region ny = new Region("New York");
+        Wine napaRed = new Wine("NapaRed", napa, "red");
+        Wine newYork = new Wine("NYWhite", ny, "white");
+        Wine napaRed2 = new Wine("NapaRed2", napa, "red");
+        Wine newYork2 = new Wine("NYWhite2", ny, "white");
+
+        regionRepo.save(napa);
+        regionRepo.save(ny);
+        wineRepo.save(napaRed);
+        wineRepo.save(newYork);
+        wineRepo.save(napaRed2);
+        wineRepo.save(newYork2);
+
+        entityManager.flush();
+        entityManager.clear();
+
+
+        assertThat(wineRepo.findWineByColor("white").contains(napaRed));
+        assertThat(wineRepo.findWineByColor("red").contains(newYork));
+
+    }
 }
 
 

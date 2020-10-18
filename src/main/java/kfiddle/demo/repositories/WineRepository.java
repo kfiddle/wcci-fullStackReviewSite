@@ -10,4 +10,9 @@ public interface WineRepository extends CrudRepository<Wine, Long> {
     Wine findWineByName(String name);
 
     Collection<Wine> findWinesByRegion(String region);
+
+    Collection<Wine> findWineByColor(String color);
+
+
 }
+

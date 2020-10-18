@@ -29,5 +29,10 @@ public class WineController {
         return "singleRegionView";
     }
 
+    @GetMapping("/{color}-wine")
+    public String displayListOFWinesByColor(@PathVariable String color, Model model) {
+        model.addAttribute("winesByColor", wineRepo.findWineByColor(color));
+        return "winesByColorView";
+    }
 
 }
